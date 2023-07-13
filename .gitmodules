@@ -1,0 +1,9 @@
+[submodule "DgmjrSdk"]
+	path = DgmjrSdk
+	url = https://github.com/dgmjr-io/DgmjrSdk.git
+[submodule "NuGetPush"]
+	path = NuGetPush
+	url = https://github.com/dgmjr-io/NuGetPush.git
+[submodule "JustInTimeVersioning"]
+	path = JustInTimeVersioning
+	url = https://github.com/dgmjr-io/JustInTimeVersioning.git
