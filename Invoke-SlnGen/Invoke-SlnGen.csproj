@@ -1,0 +1,46 @@
+<!--
+ * SlnGenV2.csproj
+ *
+ *   Created: 2023-10-09-12:46:09
+ *   Modified: 2023-10-09-12:46:09
+ *
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *
+ *   Copyright © 2022 - 2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputPath>$(MSBuildThisFileDirectory)/Invoke-SlnGen/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>Invoke-SlnGen</ToolCommandName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.SDK" />
+    <PackageReference Include="PowerShellStandard.Library" />
+    <PackageReference Include="System.ComponentModel.Usings" />
+    <PackageReference Include="Dgmjr.Abstractions" />
+    <PackageReference Include="Dgmjr.Enumerations.Abstractions" />
+    <PackageReference Include="Dgmjr.PowerShell.Classes" />
+    <PackageReference Include="MSBuild.Usings" />
+    <ProjectReference Include="../JustInTimeVersioning/JustInTimeVersioningSdk.csproj" />
+    <ProjectReference Include="../../AspNetCore/Dgmjr.AspNetCore.Sln.csproj" />
+    <!-- <PackageReference Include="System.Runtime" VersionOverride="4.3.1" />
+    <Reference Include="System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" /> -->
+  </ItemGroup>
+  <!-- <Target Name="Install" DependsOnTargets="Build" AfterTargets="Build">
+    <Exec Command="Import-Module $(OutputPath)Invoke-DotNetCli.psd1" />
+  </Target>
+  <Target Name="RemoveDist" BeforeTargets="PreBuild">
+    <Exec Command="rm -rf $(MSBuildThisFileDirectory)dist 2>null" />
+  </Target>
+  <Target Name="Install" DependsOnTargets="Pack" AfterTargets="Pack">
+    <Exec Command="pwsh -Command ./Install-InvokeSlnGen.ps1" />
+  </Target> -->
+</Project>
