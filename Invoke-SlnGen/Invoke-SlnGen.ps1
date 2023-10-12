@@ -3,11 +3,11 @@ using assembly "/usr/local/share/PackageManagement/NuGet/Packages/microsoft.buil
 [CmdletBinding()]
 param(
   [Parameter(ValueFromPipeline,
-  ValueFromPipelineByPropertyName,
-  Mandatory,
-  Position = 1,
-  ParameterSetName = "Default",
-  HelpMessage = "The path to the project file to build the solution for. Defaults to the first .*proj file in the current directory.")]
+    ValueFromPipelineByPropertyName,
+    Mandatory,
+    Position = 1,
+    ParameterSetName = "Default",
+    HelpMessage = "The path to the project file to build the solution for. Defaults to the first .*proj file in the current directory.")]
   [string]$ProjectPath
 )
 
@@ -26,7 +26,7 @@ begin {
 }
 
 process {
-  slngen --launch false "$ProjectPath"
+  slngen --launch false "$ProjectPath" --configuration "Local;Debug;Testing;Staging;Production;Release"
   # [Microsoft.Build.Execution.ProjectInstance]$project = [Microsoft.Build.Execution.ProjectInstance]::FromFile($ProjectPath)
   [System.Xml.Linq.XDocument]$project = [System.Xml.Linq.XDocument]::Load($ProjectPath)
   $projectReferences = $project.Descendants("ProjectReference")
@@ -34,8 +34,7 @@ process {
     $projectReference = $_
     $projectReferencePath = $projectReference.Attribute("Include").Value
     $includeInSolutionFile = [bool]::Parse($projectReference.Attribute("IncludeInSolutionFile")?.Value ?? "true")
-    if($includeInSolutionFile)
-    {
+    if ($includeInSolutionFile) {
       $projectReferenceFullPath = Join-Path (Split-Path $ProjectPath) $projectReferencePath
       Write-Debug("Processing project reference $projectReferenceFullPath...")
       dotnet sln add $projectReferenceFullPath
@@ -43,8 +42,7 @@ process {
   }
 
   $includeInSolutionFile = [bool]::Parse($project.Descendants("IncludeInSolutionFile")?.Value ?? "true")
-  if($includeInSolutionFile)
-  {
+  if ($includeInSolutionFile) {
     dotnet sln add "$ProjectPath"
   }
 }
