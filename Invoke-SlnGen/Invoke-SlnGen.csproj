@@ -23,15 +23,15 @@
     <ToolCommandName>Invoke-SlnGen</ToolCommandName>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.PowerShell.SDK" />
-    <PackageReference Include="PowerShellStandard.Library" />
-    <PackageReference Include="System.ComponentModel.Usings" />
-    <PackageReference Include="Dgmjr.Abstractions" />
+    <!-- <PackageReference Include="Dgmjr.Abstractions" />
     <PackageReference Include="Dgmjr.Enumerations.Abstractions" />
     <PackageReference Include="Dgmjr.PowerShell.Classes" />
-    <PackageReference Include="MSBuild.Usings" />
-    <ProjectReference Include="../JustInTimeVersioning/JustInTimeVersioningSdk.csproj" />
-    <ProjectReference Include="../../AspNetCore/Dgmjr.AspNetCore.Sln.csproj" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" />
+    <PackageReference Include="PowerShellStandard.Library" />
+    <PackageReference Include="MSBuild.Usings" IncludeAssets="Build;BuildTransitive;BuildMultitargeting;Runtime;Compile" ExcludeAssets="ContentFiles;Native;Analyzers" PrivateAssets="None" />
+    <PackageReference Include="System.ComponentModel.Usings" IncludeAssets="Build;BuildTransitive;BuildMultitargeting;Runtime;Compile" ExcludeAssets="ContentFiles;Native;Analyzers" PrivateAssets="None" /> -->
+    <!-- <ProjectReference Include="../JustInTimeVersioning/JustInTimeVersioningSdk.csproj" />
+    <ProjectReference Include="../../AspNetCore/Dgmjr.AspNetCore.All.csproj" /> -->
     <!-- <PackageReference Include="System.Runtime" VersionOverride="4.3.1" />
     <Reference Include="System.Runtime, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" /> -->
   </ItemGroup>

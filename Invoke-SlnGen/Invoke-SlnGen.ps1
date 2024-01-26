@@ -8,6 +8,7 @@ param(
     Position = 1,
     ParameterSetName = "Default",
     HelpMessage = "The path to the project file to build the solution for. Defaults to the first .*proj file in the current directory.")]
+  [ValidatePattern(".*\..*(?:(?:proj)|(?:props)|(?:targets)|(?:))")]
   [string]$ProjectPath
 )
 
@@ -26,7 +27,7 @@ begin {
 }
 
 process {
-  slngen --launch false "$ProjectPath" --configuration "Local;Debug;Testing;Staging;Production;Release"
+  slngen --launch false "$ProjectPath" --configuration "Local;Debug;Testing;Staging;Production;Release" --nologo
   # [Microsoft.Build.Execution.ProjectInstance]$project = [Microsoft.Build.Execution.ProjectInstance]::FromFile($ProjectPath)
   [System.Xml.Linq.XDocument]$project = [System.Xml.Linq.XDocument]::Load($ProjectPath)
   $projectReferences = $project.Descendants("ProjectReference")
